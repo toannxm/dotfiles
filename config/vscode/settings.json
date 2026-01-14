@@ -1,0 +1,555 @@
+{
+	"git.autofetch": true,
+	"editor.gotoLocation.multipleDefinitions": "goto",
+	"redhat.telemetry.enabled": true,
+	"vs-kubernetes": {
+		"vscode-kubernetes.helm-path-mac": "/Users/toan.nguyen2/.vs-kubernetes/tools/helm/darwin-arm64/helm",
+		"vscode-kubernetes.minikube-path-mac": "/Users/toan.nguyen2/.vs-kubernetes/tools/minikube/darwin-arm64/minikube",
+		"vscode-kubernetes.kubectl-path-mac": "/Users/toan.nguyen2/.vs-kubernetes/tools/kubectl/kubectl"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"security.promptForLocalFileProtocolHandling": false,
+	"editor.inlineSuggest.enabled": true,
+	"emmet.includeLanguages": {
+		"ejs": "js"
+	},
+	"editor.formatOnSave": false,
+	"terminal.integrated.env.osx": {
+		"FIG_NEW_SESSION": "1"
+	},
+	"nxConsole.showNodeVersionOnStartup": false,
+	"explorer.confirmDelete": false,
+	"[typescript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
+	"vue.server.maxOldSpaceSize": 4096,
+	"vue.server.hybridMode": false,
+	"typescript.tsserver.maxTsServerMemory": 4096,
+	"typescript.tsserver.nodePath": "/Users/toan.nguyen2/Library/pnpm/node",
+	"git.autofetchPeriod": 300,
+	"[vue]": {
+		"editor.defaultFormatter": "Vue.volar",
+		"editor.tabSize": 1
+	},
+	"editor.minimap.enabled": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"githubLocalActions.dockerDesktopPath": "/Applications/Docker.app",
+	"git.path": "/opt/homebrew/bin/git",
+	"mermaid.searchForExtensions": true,
+	"files.exclude": {
+		"**/__pycache__": true,
+		"**/.cache": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/*,pyc": true,
+		"**/nbproject": true,
+		"**/.editorconfig": true,
+		"**/.project": true,
+		"**/*.pyc": true,
+		"**/.idea": true,
+		"**/.mypy_cache": true,
+		"**/tmp/**": true,
+        "**/node_modules/**": true,
+        "**/.git/objects/**": true,
+		"**/.git/**": true
+		//"**/.prettierrc": true
+	},
+	"files.watcherExclude": {
+		"**/.git/objects/**": true,
+		"**/.git/subtree-cache/**": true,
+		"**/node_modules/**": true,
+		"**/env/**": true,
+		"**/public/**": true,
+		"**/.cache/**": true,
+		"**/.build/**": true,
+		"**/.nuxt/**": true,
+		"**/.widget/**": true,
+		"**/.output/**": true,
+		"**/cache/**": true,
+		"**/dist/**": true,
+		"**/vendor/**": true,
+		"**/.mypy_cache/**": true,
+		"**/.eslintcache*": true,
+		"**/.nx/**": true,
+		"**/src/static/**": true,
+		"**/vendors/**": true,
+		"**/client/**": true,
+		"**/sandbox/**": true,
+		"**/client_admin/**": true,
+		"**/.idea": true,
+		"**/.mypy_cache": true,
+		"**/tmp/**": true,
+		"**/*.po": true,
+		"**/.git/**": true
+	},
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/bower_components": true,
+		"**/*.code-search": true,
+		"**/.nuxt": true,
+		"**/.output": true,
+		"**/.widget": true,
+		"**/.build": true,
+		"**/dist": true,
+		"**/.idea": true,
+		"**/.mypy_cache": true,
+		"**/.nx": true,
+		"**/node_modules/**": true,
+		"**/dist/**": true,
+		"**/tmp/**": true,
+		"**/.git/objects/**": true,
+		"**/.git/subtree-cache/**": true,
+		"**/logs/**": true,
+		"**/*.po": true,
+		"**/*.json": true,
+		"**/*.csv": true,
+		"**/.git/**": true,
+		"**/**.md": true,
+		"**/.nx/**": true,
+		"**/*.html": true
+	},
+	"extensions.autoCheckUpdates": false,
+	"extensions.autoUpdate": false,
+	"search.followSymlinks": false,
+	"editor.fontFamily": "'MesloLGS Nerd Font Mono', 'Courier New', monospace",
+	"terminal.integrated.fontFamily": "'MesloLGS Nerd Font Mono'",
+	"terminal.integrated.fontSize": 12,
+	"search.maxResults": 200,
+	"search.ripgrep.maxThreads": 4,
+	"search.ripgrep.args": [
+		"--max-filesize=1M",
+		"--type-not=lock"
+	],
+	"search.quickOpen.includeHistory": false,
+	"search.smartCase": true,
+	"python.analysis.include": [
+		"**/src/**/*.py"
+	],
+	"editor.semanticTokenColorCustomizations": {
+		"enabled": false,
+		"rules": {}
+	},
+	"python": {
+		"languageServer": "Pylance"
+	},
+	"editor.tokenColorCustomizations": {
+		"textMateRules": [
+			{
+				"scope": [
+					"comment.block.python",
+					"comment.line.number-sign.python"
+				],
+				"settings": {
+					"foreground": "#a29c9c",
+					"fontStyle": "italic"
+				}
+			},
+			{
+				"scope": [
+					"constant.language.python",
+					"storage.type.class.python",
+					"keyword.control.flow.python",
+					"storage.type.function.python",
+					"keyword.control.import.python",
+					"keyword.operator.logical.python",
+					"constant.character.escape.python",
+					"keyword.operator.comparison.python",
+					"keyword.operator.assignment.python",
+					"storage.modifier.declaration.python",
+					"constant.character.format.placeholder.other.python"
+				],
+				"settings": {
+					"foreground": "#c87757",
+					"fontStyle": ""
+				}
+			},
+			{
+				"scope": [
+					"support.type.python",
+					"support.function.builtin.python"
+				],
+				"settings": {
+					"foreground": "#8888C6",
+					"fontStyle": ""
+				}
+			},
+			{
+				"scope": [
+					"support.variable.magic.python",
+					"support.function.magic.python"
+				],
+				"settings": {
+					"foreground": "#92116d",
+					"fontStyle": "italic"
+				}
+			},
+			{
+				"scope": [
+					"variable.language.special.self.python",
+					"variable.language.special.cls.python",
+					"variable.parameter.function.language.special.self.python",
+					"variable.parameter.function.language.special.cls.python"
+				],
+				"settings": {
+					"foreground": "#a6479b",
+					"fontStyle": ""
+				}
+			},
+			{
+				"scope": [
+					"meta.function-call.python",
+					"entity.name.function.python",
+					"meta.item-access.arguments.python",
+					"meta.member.access.python meta.function-call.python meta.function-call.generic.python",
+					"meta.function-call.python meta.function-call.arguments.python meta.function-call.python meta.function-call.generic.python"
+				],
+				"settings": {
+					"foreground": "#4B9CD3"
+				}
+			},
+			{
+				"scope": [
+					"meta.class.python",
+					"meta.function.python",
+					"keyword.operator.arithmetic.python"
+				],
+				"settings": {
+					"foreground": "#A9B7C6",
+					"fontStyle": ""
+				}
+			},
+			{
+				"scope": [
+					"meta.function.decorator.python",
+					"entity.name.function.decorator.python",
+					"meta.function.decorator.python support.type.python",
+					"meta.function.decorator.python entity.name.function.decorator.python"
+				],
+				"settings": {
+					"foreground": "#BBB529",
+					"fontStyle": "italic"
+				}
+			},
+			{
+				"scope": "entity.name.function.decorator.property.python",
+				"settings": {
+					"foreground": "#aeaea6",
+					"fontStyle": "italic"
+				}
+			},
+			{
+				"scope": "entity.name.type.class.python",
+				"settings": {
+					"foreground": "#3386de",
+					"fontStyle": "bold"
+				}
+			},
+			{
+				"scope": [
+					"meta.attribute.python",
+					"variable.parameter.function.language.python"
+				],
+				"settings": {
+					"foreground": "#CCCCCC",
+					"fontStyle": "italic"
+				}
+			},
+			{
+				"scope": "meta.function.parameters.python",
+				"settings": {
+					"foreground": "#d97085",
+					"fontStyle": "italic"
+				}
+			},
+			{
+				"scope": "meta.function.parameters.python variable.parameter.optional.python",
+				"settings": {
+					"foreground": "#943414",
+					"fontStyle": "italic underline"
+				}
+			},
+			{
+				"scope": [
+					"string.quoted.single.python",
+					"string.quoted.double.python",
+					"variable.parameter.variadic.python",
+					"string.quoted.docstring.multi.python",
+					"meta.function.parameters.python variable.parameter.variadic.python",
+					"meta.function-call.arguments.python variable.parameter.variadic.python",
+					"meta.function-call.arguments.python meta.function-call.python support.variable.magic.python",
+					"variable.parameter.function.python support.variable.magic.python"
+				],
+				"settings": {
+					"foreground": "#629755",
+					"fontStyle": "italic"
+				}
+			},
+			{
+				"scope": [
+					"meta.function-call.arguments.python variable.parameter.function-call.python"
+				],
+				"settings": {
+					"foreground": "#c04141",
+					"fontStyle": "italic"
+				}
+			},
+			{
+				"scope": [
+					"keyword.operator.unpacking.parameter.python",
+					"keyword.operator.unpacking.arguments.python",
+					"meta.function-call.arguments.python keyword.operator.unpacking.arguments.python",
+					"meta.function.parameters.python keyword.operator.unpacking.parameter.python"
+				],
+				"settings": {
+					"foreground": "#219e30"
+				}
+			},
+			{
+				"scope": "meta.function-call.arguments.python",
+				"settings": {
+					"foreground": "#ec7070"
+				}
+			},
+			{
+				"scope": "constant.other.caps.python",
+				"settings": {
+					"foreground": "#ef9e85"
+				}
+			},
+			{
+				"scope": [
+					"constant.numeric.integer.python",
+					"constant.numeric.float.python",
+					"constant.numeric.hex.python",
+					"constant.numeric.bin.python",
+					"constant.numeric.oct.python"
+				],
+				"settings": {
+					"foreground": "#6897BB",
+					"fontStyle": ""
+				}
+			},
+			{
+				"scope": "source.env variable.other.env",
+				"settings": {
+					"foreground": "#dfa15a",
+					"fontStyle": "bold"
+				}
+			},
+			{
+				"scope": "source.env comment.line.number-sign.env",
+				"settings": {
+					"foreground": "#949290"
+				}
+			},
+			{
+				"scope": [
+					"source.env",
+					"source.env string.quoted.double.env",
+					"source.env string.quoted.single.env",
+					"source.env constant.numeric.env"
+				],
+				"settings": {
+					"foreground": "#48b345"
+				}
+			}
+		]
+	},
+	"terminal.integrated.enableMultiLinePasteWarning": "never",
+	"[xml]": {
+		"editor.defaultFormatter": "redhat.vscode-xml"
+	},
+	"workbench.settings.applyToAllProfiles": [
+		"editor.fontFamily"
+	],
+	"github.copilot.chat.codesearch.enabled": true,
+	"cSpell.userWords": [
+		"aggr",
+		"aggs",
+		"aicore",
+		"cals",
+		"CEMSSO",
+		"distmemo",
+		"Donalds",
+		"dtos",
+		"genai",
+		"gids",
+		"Helpjuice",
+		"helpsite",
+		"icenter",
+		"IMEI",
+		"jobloc",
+		"joblocs",
+		"jsonloads",
+		"Langfuse",
+		"langfuses",
+		"LOUTER",
+		"mcdonalds",
+		"mchire",
+		"millis",
+		"monomemo",
+		"nameid",
+		"odtutils",
+		"onelogin",
+		"prefs",
+		"setdiff",
+		"siem",
+		"toan",
+		"translog",
+		"uids",
+		"UNSUBSCRIPTION",
+		"viewonly",
+		"viewset",
+		"viewsets"
+	],
+	"python.analysis.autoImportCompletions": true,
+	"psi-header.templates": [
+		{
+			"language": "python",
+			"template": [
+				"#! /usr/bin/python",
+				"#",
+				"# Copyright (C) <<year>> Paradox",
+				"#",
+				"# Release: <<releaseVersion>>",
+				"# @link <<company>>",
+				"#",
+				"",
+				"__author__ = \"<<author>>\"",
+				"__date__ = \"$<<filecreated('MMMM DD, YYYY h:mm:ss A')>>$\""
+			]
+		}
+	],
+	"psi-header.config": {
+		"forceToTop": true,
+		"blankLinesAfter": 1
+	},
+	"psi-header.variables": [
+		["author", "toan.nguyen2"],
+		["authorEmail", "toan.nguyen2@paradox.ai"],
+        ["company", "olivia.paradox.ai"],
+        ["releaseVersion", "vx.x.x"]
+    ],
+    "psi-header.lang-config": [
+        {
+            "language": "python",
+            "begin": "",
+            "end": ""
+        }
+    ],
+	"psi-header.changes-tracking": {
+		"isActive": true,
+		"modAuthor": "Modified By:",
+		"modDate": "Last Modified:",
+		"modDateFormat": "MMMM DD, YYYY h:mm:ss A",
+		"include": [],
+		"exclude": [
+			"markdown",
+			"json",
+			"jsonc",
+			"xml"
+		],
+		"autoHeader": "autoSave"
+	},
+	"security.workspace.trust.untrustedFiles": "open",
+	"files.autoSave": "onWindowChange",
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"yaml.schemas": {
+		"file:///Users/toan.nguyen2/.vscode/extensions/atlassian.atlascode-4.0.14/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+	},
+	"atlascode.jira.enabled": true,
+	"atlascode.bitbucket.enabled": false,
+	"github.copilot.nextEditSuggestions.enabled": true,
+	"explorer.confirmDragAndDrop": false,
+	"chat.editing.confirmEditRequestRetry": false,
+	"terminal.integrated.profiles.osx": {
+		"Nushell": {
+			"path": "/opt/homebrew/bin/nu",
+			"args": [
+				"--config",
+				"~/Workday/MacSetup/dotfiles/config/nushell/config.nu",
+				"--env-config",
+				"~/Workday/MacSetup/dotfiles/config/nushell/env.nu"
+			]
+		}
+	},
+	"terminal.integrated.defaultProfile.osx": "Nushell",
+	"python.terminal.activateEnvironment": false,
+	"workbench.colorCustomizations": {
+		"[Vira*]": {
+			"statusBar.debuggingBackground": "#80CBC433",
+			"statusBar.debuggingForeground": "#80CBC4",
+			"toolbar.activeBackground": "#80CBC426",
+			"button.background": "#80CBC4",
+			"button.hoverBackground": "#80CBC4cc",
+			"extensionButton.separator": "#80CBC433",
+			"extensionButton.background": "#80CBC414",
+			"extensionButton.foreground": "#80CBC4",
+			"extensionButton.hoverBackground": "#80CBC433",
+			"extensionButton.prominentForeground": "#80CBC4",
+			"extensionButton.prominentBackground": "#80CBC414",
+			"extensionButton.prominentHoverBackground": "#80CBC433",
+			"activityBarBadge.background": "#80CBC4",
+			"activityBar.activeBorder": "#80CBC4",
+			"activityBarTop.activeBorder": "#80CBC4",
+			"list.inactiveSelectionIconForeground": "#80CBC4",
+			"list.activeSelectionForeground": "#80CBC4",
+			"list.inactiveSelectionForeground": "#80CBC4",
+			"list.highlightForeground": "#80CBC4",
+			"sash.hoverBorder": "#80CBC480",
+			"list.activeSelectionIconForeground": "#80CBC4",
+			"scrollbarSlider.activeBackground": "#80CBC480",
+			"editorSuggestWidget.highlightForeground": "#80CBC4",
+			"textLink.foreground": "#80CBC4",
+			"progressBar.background": "#80CBC4",
+			"pickerGroup.foreground": "#80CBC4",
+			"tab.activeBorder": "#80CBC4",
+			"tab.activeBorderTop": "#80CBC400",
+			"tab.unfocusedActiveBorder": "#80CBC4",
+			"tab.unfocusedActiveBorderTop": "#80CBC400",
+			"tab.activeModifiedBorder": "#80CBC400",
+			"notificationLink.foreground": "#80CBC4",
+			"editorWidget.resizeBorder": "#80CBC4",
+			"editorWidget.border": "#80CBC4",
+			"settings.modifiedItemIndicator": "#80CBC4",
+			"panelTitle.activeBorder": "#80CBC4",
+			"breadcrumb.activeSelectionForeground": "#80CBC4",
+			"menu.selectionForeground": "#80CBC4",
+			"menubar.selectionForeground": "#80CBC4",
+			"editor.findMatchBorder": "#80CBC4",
+			"selection.background": "#80CBC440",
+			"statusBarItem.remoteBackground": "#80CBC414",
+			"statusBarItem.remoteHoverBackground": "#80CBC4",
+			"statusBarItem.remoteForeground": "#80CBC4",
+			"notebook.inactiveFocusedCellBorder": "#80CBC480",
+			"commandCenter.activeBorder": "#80CBC480",
+			"chat.slashCommandForeground": "#80CBC4",
+			"chat.avatarForeground": "#80CBC4",
+			"activityBarBadge.foreground": "#000000",
+			"button.foreground": "#000000",
+			"statusBarItem.remoteHoverForeground": "#000000"
+		}
+	},
+	"workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
+	"workbench.iconTheme": "material-icon-theme",
+	"sonarlint.rules": {
+		"python:S7498": {
+			"level": "off"
+		}
+	},
+	"chat.agent.maxRequests": 5000,
+	"workbench.activityBar.location": "top",
+	"sonarlint.focusOnNewCode": true,
+	"gitlens.views.fileHistory.mode": "contributors",
+	"chat.viewSessions.orientation": "stacked",
+	"claudeCode.preferredLocation": "panel",
+	"atlascode.rovodev.showEntitlementNotifications": false
+}

@@ -1,0 +1,10 @@
+<!-- Sanitized DataGrip dataSources.local.xml exported via datagrip_sync.sh -->
+<!-- Contains schema selection metadata; safe to version minus secrets. -->
+<data-sources-local>
+  <data-source name="ExamplePostgres" uuid="__UUID__">
+    <schema-config>
+      <current-schema>public</current-schema>
+      <introspected>true</introspected>
+    </schema-config>
+  </data-source>
+</data-sources-local>

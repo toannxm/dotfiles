@@ -1,0 +1,12 @@
+# Environment files with sensitive data
+config/nushell/.env
+config/nushell/.env.local
+
+# Local configuration overrides
+*.local
+
+# Cache directories
+.cache/
+
+# OS files
+.DS_Store

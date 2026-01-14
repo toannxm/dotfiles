@@ -1,0 +1,21 @@
+{
+    "port": 6979,
+    "debug": false,
+    "usageTracking": true,
+    "providers": [
+        {
+            "name": "copilot",
+            "enabled": true,
+            "githubToken": "YOUR_GITHUB_TOKEN_HERE",
+            "accountType": "individual"
+        },
+        {
+            "name": "anthropic",
+            "enabled": false,
+            "apiKey": ""
+        }
+    ],
+    "apiKeys": [
+        "proxypal-local"
+    ]
+}

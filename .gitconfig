@@ -1,0 +1,119 @@
+[user]
+	name = toannxm
+	email = toannxm.itedu@gmail.com
+
+[core]
+    editor = nvim
+    autocrlf = input
+    excludesfile = ~/.gitignore_global
+
+[init]
+    defaultBranch = main
+
+[push]
+    default = simple
+
+[pull]
+    rebase = false
+
+[merge]
+    tool = vimdiff
+
+[diff]
+    tool = vimdiff
+
+[color]
+    ui = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red
+    new = green
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[alias]
+    # Core shortcuts
+    st = status -sb
+    ss = status --short
+    ci = commit
+    cia = commit --amend --no-edit
+    br = branch
+    co = checkout
+    ck = checkout
+    df = diff
+    dc = diff --cached
+    # Log / history views
+    lg = log --oneline --decorate --graph
+    lga = log --oneline --decorate --graph --all
+    ls = log --pretty=format='%C(yellow)%h %C(cyan)%ad %C(red)%d %C(reset)%s %C(blue)[%cn]' --decorate --date=short
+    last = log -1 HEAD
+    # Enhanced log with relative time & committer
+    ll = log --pretty=format='%C(auto)%h %C(blue)%an %C(green)%cr %C(yellow)%s %C(red)%d' --decorate --graph
+    # Diff helpers
+    dword = diff --word-diff
+    dw = diff --word-diff=color
+    # Staging / resets
+    unstage = reset HEAD --
+    rsh = reset --hard HEAD
+    rs1 = reset HEAD~1 --mixed
+    # Rebasing / cherry pick
+    rb = rebase
+    rbi = rebase -i
+    cp = cherry-pick
+    # Pull / fetch / push
+    pll = pull -p --rebase
+    pln = pull --no-rebase
+    f = fetch -p
+    fa = fetch --all --prune
+    psh = push origin HEAD
+    pf = push --force-with-lease
+    pft = push --follow-tags
+    # Tags
+    t = tag -l
+    tn = tag -n
+    # Remotes
+    r = remote -v
+    ra = remote add
+    rr = remote remove
+    # Stash
+    sl = stash list
+    ssav = stash save
+    sap = stash apply
+    sp = stash pop
+    sd = stash drop
+    # Cleanups
+    prune = remote prune origin
+    clean-branches = !bash -c 'git branch --merged | egrep -v "^(\\*|main|master|develop)$" | xargs -r -n1 git branch -d'
+    # Gitk visual (requires gitk installed)
+    visual = !gitk
+    # Grep helpers
+    g = grep -n --break --heading --line-number
+    ga = grep -n --break --heading --line-number -E
+    # Blame (ignore whitespace)
+    bl = blame -w
+    # Show ignored files
+    ignored = ls-files -o -i --exclude-standard
+    # Amend latest commit
+    amend = commit --amend --no-edit
+    # Quick add & commit
+    ac = !bash -c 'git add -A && git commit -m "${1:-update}"'
+    # Show current branch name only
+    cb = rev-parse --abbrev-ref HEAD
+    # Undo last commit but keep changes staged
+    undo = reset --soft HEAD~1
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

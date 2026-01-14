@@ -1,0 +1,31 @@
+{
+  "recommendations": [
+    "antfu.browse-lite",
+    "antfu.goto-alias",
+    "antfu.iconify",
+    "atlassian.atlascode",
+    "atommaterial.a-file-icon-vscode",
+    "boukichi.git-exclude",
+    "codezombiech.gitignore",
+    "cpylua.language-postcss",
+    "dariofuzinato.vue-peek",
+    "diogonolasco.pyinit",
+    "dotjoshjohnson.xml",
+    "fnando.linter",
+    "frhtylcn.pythonsnippets",
+    "kruemelkatze.vscode-dashboard",
+    "mermaidchart.vscode-mermaid-chart",
+    "mgesbert.python-path",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "ms-python.vscode-python-envs",
+    "nrwl.angular-console",
+    "psioniq.psi-header",
+    "redis.redis-for-vscode",
+    "thenuprojectcontributors.vscode-nushell-lang",
+    "visualstudioexptteam.intellicode-api-usage-examples",
+    "visualstudioexptteam.vscodeintellicode",
+    "wayou.vscode-todo-highlight",
+    "yaelguilloux.pinceau-vscode",
+    "yinfei.luahelper"
+  ]
+}
