@@ -1,0 +1,202 @@
+x-healthcheck-defaults: &healthcheck_defaults
+  interval: "$HEALTHCHECK_INTERVAL"
+  timeout: "$HEALTHCHECK_TIMEOUT"
+  retries: $HEALTHCHECK_RETRIES
+  start_period: "$HEALTHCHECK_START_PERIOD"
+
+services:
+  # Arcane
+  # arcane:
+  #   image: ghcr.io/ofkm/arcane:latest
+  #   container_name: arcane
+  #   restart: unless-stopped
+  #   ports:
+  #     - 3552:3552
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - arcane-data:/app/data
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - APP_URL=http://localhost:3552
+  #     - ENCRYPTION_KEY=b61d433af151f2ed733eed1296ec72ff98218cd5f20e3c12359bae225b2aa2f7
+  #     - JWT_SECRET=9b613b48f5cda7c24fcab3daf483d47d3566186b32d16402de6ac4672bb3f32c
+  #     - DATABASE_URL=file:data/arcane.db?_pragma=journal_mode(WAL)&_pragma=busy_timeout(2500)&_txlock=immediate
+
+  # Bytebase (Database Management)
+  # bytebase:
+  #   image: bytebase/bytebase:latest
+  #   container_name: bytebase
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ~/.bytebase/data:/var/opt/bytebase
+  #   restart: always
+
+  # Elasticsearch
+  elasticsearch:
+    image: "elasticsearch:7.10.1"
+    container_name: "${ELASTICSEARCH_NAME}"
+    platform: linux/amd64
+    ports:
+      - "${ELASTICSEARCH_PORT}:9200"
+    environment:
+      - discovery.type=single-node
+      - transport.port=${ELASTICSEARCH_PORT}
+      - http.port=9200
+      - http.cors.allow-origin=*
+      - http.cors.enabled=true
+      - http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization
+      - http.cors.allow-credentials=true
+      - ES_JAVA_OPTS=-Xms2g -Xmx2g
+      - path.repo=/usr/share/elasticsearch/snapshots
+      - xpack.security.enabled=false
+      - ELASTIC_USERNAME=${ELASTICSEARCH_USERNAME}
+      - ELASTIC_PASSWORD=${ELASTICSEARCH_PASSWORD}
+    volumes:
+      - es-snapshots:/usr/share/elasticsearch/snapshots
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    healthcheck:
+      <<: *healthcheck_defaults
+      test: [ "CMD-SHELL", "curl --silent --fail localhost:9200/_cluster/health || exit 1" ]
+
+  # Kibana
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.10.0
+    container_name: "${KIBANA_NAME}"
+    environment:
+      - SERVER_NAME=localhost
+      - ELASTICSEARCH_URL="http://localhost:${ELASTICSEARCH_PORT}"
+      - ELASTICSEARCH_USERNAME=${KIBANA_USERNAME}
+      - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
+      - xpack.security.enabled=true
+    ports:
+      - "${KIBANA_PORT}:5601"
+    depends_on:
+      - elasticsearch
+    platform: linux/amd64
+
+  # Mysql
+  mysql:
+    image: "mysql:8.0.31"
+    container_name: "${MYSQL_NAME}"
+    ports:
+      - "${MYSQL_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - ./mysql:/etc/mysql/conf.d
+      - ./mysqldump/:/docker-entrypoint-initdb.d/
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      <<: *healthcheck_defaults
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_PASSWORD}" ]
+
+  # Redis
+  redis:
+    restart: always
+    image: redis
+    container_name: "${REDIS_NAME}"
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      <<: *healthcheck_defaults
+      test: [ "CMD-SHELL", "redis-cli ping | grep PONG" ]
+
+  # Mongo
+  mongo:
+    image: mongo
+    container_name: "${MONGODB_NAME}"
+    ports:
+      - "${MONGODB_PORT}:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGODB_DATABASE}
+    volumes:
+      - ./mongo/:/docker-entrypoint-initdb.d/
+      - mongo-data:/data/db
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: "${RABBITMQ_NAME}"
+    ports:
+      - "${RABBITMQ_PORT_1}:5672"
+      - "${RABBITMQ_PORT_2}:15672"
+      - "${RABBITMQ_PORT_3}:15691"
+      - "${RABBITMQ_PORT_4}:15692"
+    environment:
+      - CELERY_BROKER_USER=${CELERY_BROKER_USER}
+      - CELERY_BROKER_PASSWORD=${CELERY_BROKER_PASSWORD}
+      - CELERY_BROKER_PORT=${RABBITMQ_PORT_1}
+      - CELERY_BROKER_VHOST=${CELERY_BROKER_VHOST}
+    volumes:
+      - ./rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+      - ./rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
+
+  # Flower
+  flower:
+    image: mher/flower:0.9.5
+    container_name: "${FLOWER_NAME}"
+    command:
+      [
+        "flower",
+        "--broker=pyamqp://${CELERY_BROKER_USER}:${CELERY_BROKER_PASSWORD}@rabbitmq:5672/${CELERY_BROKER_VHOST}",
+        "--port=${FLOWER_PORT}",
+      ]
+    ports:
+      - "${FLOWER_PORT}:${FLOWER_PORT}"
+    depends_on:
+      - rabbitmq
+    platform: linux/amd64
+
+  # localstack
+  localstack:
+    container_name: "${LOCALSTACK_NAME}"
+    image: localstack/localstack
+    ports:
+      - "4566:4566"
+      - "4571:4571"
+    environment:
+      # LocalStack configuration: https://docs.localstack.cloud/references/configuration/
+      - DEBUG=${DEBUG:-0}
+      - SERVICES=${LOCALSTACK_SERVICES:-s3}
+      - DATA_DIR=${LOCALSTACK_DATA_DIR- }
+      - LAMBDA_EXECUTOR=${LOCALSTACK_LAMBDA_EXECUTOR- }
+      - KINESIS_ERROR_PROBABILITY=${LOCALSTACK_KINESIS_ERROR_PROBABILITY- }
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - AWS_DEFAULT_REGION=us-east-1
+      - EXTRA_CORS_ALLOWED_ORIGINS=*
+      #      - MS_INPUT_BUCKET=${MS_INPUT_BUCKET}
+      #      - MS_OUTPUT_BUCKET=${MS_OUTPUT_BUCKET}
+      #      - MS_OUTPUT_BUCKET_CAREER_SITE=${MS_OUTPUT_BUCKET_CAREER_SITE}
+      # Websocket API Gateway settings
+    #      - API_ORIGIN=${API_ORIGIN}
+    #      - LOCALSTACK_HOSTNAME=${LOCALSTACK_HOSTNAME}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./localstack/terraform:/opt/code/localstack/tf
+      - ./localstack/scripts/init.sh:/etc/localstack/init/ready.d/init.sh
+      - localstack:/var/lib/localstack
+    healthcheck:
+      <<: *healthcheck_defaults
+      test: [ "CMD", "curl", "-f", "http://localhost:4566/_localstack/health" ]
+
+volumes:
+  mongo-data:
+  elasticsearch-data:
+  mysql-data:
+  redis-data:
+  localstack:
+  es-snapshots:
+  arcane-data:
+    driver: local

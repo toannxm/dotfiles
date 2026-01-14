@@ -1,0 +1,23 @@
+# Environment files with sensitive data
+config/nushell/.env
+config/nushell/.env.local
+.env
+.env.local
+
+# Local configuration overrides
+*.local
+
+# Backup files
+*.tar.gz
+*.sql
+*.dump
+
+# Cache directories
+.cache/
+
+# OS files
+.DS_Store
+
+# IDE files
+.vscode/
+.idea/
